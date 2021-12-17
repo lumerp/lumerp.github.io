@@ -4,6 +4,7 @@ title: Primer Post - Info
 excerpt: "Primer Post del Foro Esperemos que os guste!!"
 date: 2021-12-17
 classes: wide
+comments: true
 header:
   teaser: /assets/images/post1/post1.png
   teaser_home_page: true
