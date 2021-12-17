@@ -15,11 +15,11 @@ remote_theme             : "mmistakes/minimal-mistakes@4.15.1"
 minimal_mistakes_skin    : "haxor" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
-title                    : "snowscan.io"
+locale                   : "en-ES"
+title                    : "Lumerp.io"
 title_separator          : "-"
-name                     : "Snowscan"
-description              : "Posts about security, CTFs and networking"
+name                     : "Lume RP"
+description              : "Foro de Lume RP , made with 🧡"
 url                      : "https://snowscan.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "slemire/slemire.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -59,8 +59,8 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-search                   : # true, false (default)
-search_full_content      : # true, false (default)
+search                   :  true #false (default)
+search_full_content      :  true #false (default)
 search_provider          : # lunr (default), algolia, google
 algolia:
   application_id         : # YOUR_APPLICATION_ID
@@ -78,7 +78,7 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : "bttweed_"
 facebook:
   username               :
   app_id                 :
@@ -96,16 +96,16 @@ analytics:
   provider               : "google" # false (default), "google", "google-universal", "custom"
   google:
     tracking_id          : "UA-145129883-1"
-    anonymize_ip         : false # (default)
+    anonymize_ip         : true # (default)
 
 
 # Site Author
 author:
-  name             : "Snowscan"
+  name             : "eduu.vc"
   avatar           : "/assets/images/avatar.png"
-  bio              : "Pentester, CTF player<br>HackTheBox ATeam"
-  location         : "Canada"
-  email            : "info@snowscan.io"
+  bio              : "Foro de Lume RP ,<br>by eduu.vc made with 🧡"
+  location         : "España"
+  email            : "bttweed@outlook.es"
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
@@ -114,11 +114,11 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "slemire"
+  github           : "eduuvc"
   gitlab           :
   google_plus      :
-  keybase          : "snowscan"
-  instagram        :
+  keybase          : #"snowscan"
+  instagram        : "https://www.instagram.com/eduu.vc"
   lastfm           :
   linkedin         : # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
   pinterest        :
@@ -126,11 +126,11 @@ author:
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
   steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
   tumblr           :
-  twitter          : "snowscan"
+  twitter          : "bttweed_"
   vine             :
   weibo            :
   xing             :
-  youtube          : # "https://youtube.com/c/MichaelRoseDesign"
+  youtube          : # "https://youtube.com/c/lumerp"
 
 
 # Reading Files
