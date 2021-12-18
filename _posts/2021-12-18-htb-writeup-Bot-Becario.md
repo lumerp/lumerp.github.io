@@ -16,19 +16,33 @@ tags:
 ---
 
 Despues de casi 3 semanas el bot de discord @BECARIO vuelve a funcionar.
+
 Si ves algun bug comentalo en los cometarios.
+
 El bot actualmente se encuentra hosteado en Heroku.
+
 Actualmente cuenta con 18 funciones.
-Cambios :
-~ Añadida funcion nowplaying {
+
+Cambios:
+
+1. Añadida funcion nowplaying {
+     
      -nowplaying
+          
                   o
+     
      -np 	
+   
     {
-~ Terminado el embed de help{
+
+1. Terminado el embed de help{
+     
      -help
-           o
-     -h 	
+          
+                  o
+     
+     -h	
+   
     {
-                 
+          
 ![](/assets/images/post2/helpimagen.png)
