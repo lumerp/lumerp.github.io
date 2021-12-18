@@ -35,7 +35,7 @@ Cambios:
    
     {
 
-1. Terminado el embed de help{
+2. Terminado el embed de help{
      
      -help
           
