@@ -29,7 +29,7 @@ Cambios:
      
      -nowplaying
           
-                  o
+
      
      -np 	
    
@@ -39,7 +39,7 @@ Cambios:
      
      -help
           
-                  o
+
      
      -h	
    
