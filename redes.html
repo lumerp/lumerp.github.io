@@ -336,24 +336,6 @@ sw#switchport port-security aging time -minutos-<br />
         sw(config-if)switchport mode trunk allowed vlan 5,6,7,8 //permitir vlans (dependiendo del ejecicio hace falta o no)<br>
         <br />
     </samp></p>
-    <p>Configurar la vlan en un router</p>
-    <p><samp><br />
-        Ro>enable<br />
-        Ro#configure terminal<br />
-        Ro(config)interface fastEthernet -numero- //(ej:0/0.5) el numero despues del punto tiene que ser igual a la vlan q estes configurando <br />
-        Ro(config-subif)
-        <br />
-    </samp></p>
-    <p>Configurar la ip de cada vlan en un router</p>
-    <p><samp><br />
-        Ro>enable<br />
-        Ro#configure terminal<br />
-        Ro(config)interface fastEthernet -numero- //(ej:0/0.5) el numero despues del punto tiene que ser igual a la vlan q estes configurando <br />
-        Ro(config-subif)encapsulation dot1Q -numero- //(ej: 5 ) el numero tiene que ser igual a la vlan q estes configurando <br />
-        Ro(config-subif) ip address -ip- -mascara- //la ip y la mascara seran las de la red (ej: 192.170.0.1 255.255.255.0 ) <br>
-        Ro(config-subif)no sh //para que se encienda  <br>
-        <br />
-    </samp></p>
     <p>Configurar la ip de cada vlan en un router</p>
     <p><samp><br />
         Ro>enable<br />
