@@ -1,0 +1,457 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Redes Comandos</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<div class="footer-basic">
+    <footer>
+        <div class="social"><a href="https://www.instagram.com/eduu.vc"><i class="icon ion-social-instagram"></i></a><a href="https://twitter.com/bttweed_"><i class="icon ion-social-twitter"></i></a></div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://lumerp.github.io">Home</a></li>
+            <li class="list-inline-item"><a href="https://lumerp.github.io/year-archive/">Posts</a></li>
+            <li class="list-inline-item"><a href="https://lumerp.github.io/about/">About</a></li>
+        </ul>
+        <p class="copyright">eduu.vc</p>
+    </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<style>
+    .footer-basic {
+  padding:9px 0;
+  background-color:#000000;
+  color:#89b8e7;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1;
+}
+
+.footer-basic .social {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer-basic .social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+</style>
+</head>
+<body style="background-color: rgb(213, 181, 223);">
+ <div class="cajas">
+    <br />
+    <br />
+    <p style="font-size: 28px;">UNIDAD 5 PARTE 1</p>
+    <br />
+    <br />
+<p>Configuracion de un router:</p>
+
+<p><samp><br />
+    Router>enable<br />
+    Router#configure terminal<br />
+    Router(config)#interface fastEthernet 0/0<br />
+    Router(config-if)#ip address 192.168.20.1 255.255.255.0<br />
+    Router(config-if)#no shutdown <br />
+    <br /></samp></p>
+  <p>Configuracion SSH Para conectarse a un Switch:</p>
+    <p><samp><br />
+        sw>enable<br />
+        sw#configure terminal<br />
+        sw(config)#interface vlan 1<br />
+        sw(config-if)#ip address -ip- -mascara- <br />
+        sw(config-if)#no shutdown <br />
+        sw(config-if)#ip domain-name -nombredominio- <br />
+            sw(config)#hostname SSH<br />
+            SSH(config)#crypto key generate rsa<br />
+                                                        //parametros de la key<br />
+            How many bits in the modulus [512]: 128<br />
+            % A decimal number between 360 and 2048<br />
+            How many bits in the modulus [512]: 2048<br />
+            
+            SSH(config)#line vty 0 4                //numero de dispositivos simultaneamente conectados<br />
+            SSH(config-line)#transport input ssh<br />
+            SSH(config-line)#login local<br />
+            SSH(config-line)#username user privilege 15 password 1234<br />
+            SSH(config)#enable secret zxc<br />
+            SSH(config)#exit<br />
+            SSH#write memory                   //escribirlo en la memoria<br />
+            
+        <br />
+
+    </samp></p>
+<p>Configuracion de Usuario y password en un Switch:</p>
+    <a><samp><br />
+        sw>enable 
+        sw#configure terminal <br />  
+        sw(config)#line console 0      <br />              
+        sw(config-line)#login local <br />
+        sw(config-line)#exit<br />
+        sw(config)#username<br />
+        sw(config)#username -nombredeusuario- password -password- <br />
+        sw(config)#exit<br />
+        sw#configure terminal                    //accedemos al modo de configuracion global.    <br />                  
+        sw(config)#enable password -password- //password del modo privilegiado<br />
+        sw(config)#exit<br />
+        sw#write memory                       //escribirlo en la memoria<br />
+        
+        <br />
+    </samp></a>
+    <p>Configurar una ip en un swicht:</p>
+    <p><samp><br />
+        sw>enable                                        //accedemos en modo administrador.<br />
+        sw#configure terminal                           //accedemos al modo de configuracion global.<br />
+        sw(config)#int vlan 1                          //accedemos a la interfaz vlan 1.<br />
+        sw(config-if)#ip address -ip- -mascara-       //asignamos la IP/mascara al switch.<br />
+        sw(config-if)#ip default-gateway -gateway-   //asignamos una gateway(en caso q se pida si no, no)<br />
+        sw(config-if)#no shutdown                   //arrancamos la interfaz.<br />
+        <br />
+    </samp></p>
+<p>Configurar Telnet:</p>
+    <p><samp><br />
+        sw>enable<br />
+        sw#configure terminal<br />
+        sw(config)#line vty 0 15                      //numero de personas simultaneamente que se adminten<br />
+        sw(config-line)#password -password-<br />
+        sw(config-line) #login<br />
+        sw(config-line)#exit<br />
+        sw(config)#enable secret -password-<br />
+                                                  //configurar una ip.<br />
+        sw>enable                                //accedemos en modo administrador.<br />
+        sw#configure terminal                   //accedemos al modo de configuracion global.<br />
+        sw(config)#int vlan 1                  //accedemos a la interfaz vlan 1.<br />
+        sw(config)#ip address -ip- -mascara-  //asignamos la IP/mascara al switch.<br />
+        sw(config-if)#no shutdown            //arrancamos la interfaz.<br />
+        <br />
+    </samp></p>
+<p>Seguridad de Puertos Forma estatica 1 sola Mac:</p>
+    <p><samp><br />
+        sw>enable<br />
+        sw#configure terminal<br />
+        sw(config)#interface -numerointerfaz- //f0/1-f024                         //la nuestra.<br />
+        sw(config-if)#switchport mode access<br />
+        sw(config-if)#switchport port-security<br />
+        sw(config-if)#switchport port-security mac-address sticky              //para que las recuerde.<br />
+        sw(config-if)#switchport port-security mac-address sticky -macAdress- //dinamica no poner nada.<br />
+            <br />
+
+    </samp></p>
+<p>Seguridad de Puertos Forma estatica varias Mac:</p>
+    <p><samp><br />
+        sw>enable<br />
+        sw#configure terminal<br />
+        sw(config)#interface -numinterfaz- //f0/1-f024<br />
+        sw(config-if)#switchport mode access<br />
+        sw(config-if)#switchport port-security<br />
+        sw(config-if)#switchport port-security maximum -nuMaximum-  //ping para q recuerde <br />
+        <br />
+    </samp></p>
+<p>Seguridad de Puertos Restriccion del swicht:</p>
+    <p><samp><br />
+        sw>enable<br />
+        sw#configure terminal<br />
+        sw(config)#interface -nuinterfaz- //f0/1-f024<br />
+        sw(config-if)#switchport mode access<br />
+        sw(config-if)#switchport port-security<br />
+        sw(config-if)#switchport port-security violation {shutdown | protect | restrict}<br />
+        <br />
+
+    </samp></p>
+<p>Seguridad de Puertos Mostrar las direcciones Mac:</p>
+    <p><samp><br />
+        sw#show port address<br />
+        <br />
+    </samp></p>
+<p>Seguridad de Puertos Mostrar configuracion de los puertos:</p>
+    <p><samp><br />
+       
+        sw#show run<br />
+        <br />
+    </samp></p>
+<p>Seguridad de Puertos Estado de seguridad:</p>
+    <p><samp><br />
+    
+        sw#show port-security<br />
+        <br />
+    </samp></p>
+<p>Seguridad de Puertos Direcciones MAC autorizadas en cada puerto:</p>
+    <p><samp><br />
+    
+        sw#show port-security address<br />
+        <br />
+    </samp></p>
+<p>Seguridad de Puertos Configuracion detallada de un puerto:</p>
+    <p><samp><br />
+    
+        sw#show port-security interface -interfaz-<br />
+        <br />
+    </samp></p>
+<p>Seguridad de Puertos Elimar Mac seguras:</p>
+    <p><samp><br />
+        sw#clear port-security all<br />
+    sw#clear port-security configured    //para las estaticas<br />
+    sw#clear port-security dynamic      //para las dinamicas<br />
+    sw#clear port-security sticky      //para las sticky<br />
+    <br />
+    </samp></p>
+<p>Seguridad de Puertos Tiempo que se conserva la mac aprendida:</p>
+    <p><samp><br />
+    
+sw#switchport port-security aging time -minutos-<br />
+<br />
+    </samp></p>
+<p>Spannig tree Configurar Swicht como principal:</p>
+    <p><samp><br />
+        sw1# configure terminal<br />
+        sw1(config)# spanning-tree vlan 1 root primary<br />
+        
+       <br />
+        
+    </samp></p>
+<p> Spannig tree Configurar Swicht como secundario:</p>
+    <p><samp><br />
+        
+        sw2# configure terminal<br />
+        
+        sw2(config)# spanning-tree vlan 1 root secondary<br />
+        <br />
+    </samp></p>
+<p>Spannig tree Saber si Swicht es root/principal:</p>
+    <p><samp><br />
+        <br />
+        sw#1#sh spanning-tree<br />
+        <br />
+        
+        VLAN0001                                                  //Info Swicht root.
+        Spanning tree enabled protocol ieee                      //Info Swicht root.
+        Root ID Priority 24577                                  //Info Swicht root.
+        Address 000B.BE09.C457                                 //Info Swicht root.
+        This bridge is the root                               //Info Swicht root.
+        Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec //Info Swicht root.
+        <br />
+        <br />
+    Bridge ID Priority (priority 24576) //Info Swicht actual <br />
+    Address 000B.BE09.C457  //priority cuanto mas peque mejor<br />
+    Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec<br />
+    Aging Time 20<br />
+    Interface Role Sts Cost Prio.Nbr Type<br />
+    ---------------- ---- --- ------------<br />
+    Fa0/1     Desg  FWD 19  128.1 P2p      //cost = velociad <br />
+    Fa0/2     Desg  FWD 19  128.2 P2p     //si es igual 128+1<br />
+    <br />
+        
+    </samp></p>
+<p>Spannig tree Cambiar prioridad del Swicht:</p>
+    <p><samp><br />
+        sw1# configure terminal<br />
+        sw1(config)#spanning-tree vlan 1-2 priority <numero> //cuanto mas peque mas prioridad<br />
+            <br />
+    </samp></p>
+<p>Spannig tree Mirar Mac del swicht:</p>
+    <p><samp><br />
+        sw#1#show version<br />
+        <br />
+    </samp></p>
+    <br />
+    <br />
+    <p style="font-size: 28px;">UNIDAD 5 PARTE 2</p>
+    <br />
+    <br />
+    <p>Crear Vlans:</p>
+    <p><samp><br />
+        sw>enable<br />
+        sw#configure terminal<br />
+        sw#vlan -numero-  //numero de la vlan por ejemplo 5 o 20<br />
+        sw(config-vlan)name -nombre-   //nombre de la vlan<br />
+        <br />
+    </samp></p>
+    <p>Asignar un puerto o un rango de puertos a una vlan:</p>
+    <p><samp><br />
+        sw>enable<br />
+        sw#configure terminal<br />
+        sw(config)interface range fastEthernet -rango-  //configurar rango(ej:0/1-2) de puertos sin rango lo mismo pero sin -range-<br />
+        sw(config-if-range)switchport mode access      //activar el modo access<br />
+        sw(config-if-range)switchport access vlan -numero-   //poner numero de vlan<br />
+        <br />
+    </samp></p>
+    <p>Mirar lista de vlans:</p>
+    <p><samp><br />
+        sw>enable<br />
+        sw#sh vlan brief<br />
+        <br />
+    </samp></p>
+    <p>Poner un puerto en modo Trunk:</p>
+    <p><samp><br />
+        sw>enable<br />
+        sw#configure terminal<br />
+        sw(config)interface fastEthernet -numero- //poner numero (ej:0/24)<br />
+        sw(config-if)switchport mode trunk //activar el modo trunk<br>
+        //el siguiente comando solo es necesario si queremos interconectar las vlans entre si. (poder hace ping a todas) <br>
+        sw(config-if)switchport mode trunk allowed vlan 5,6,7,8 //permitir vlans (dependiendo del ejecicio hace falta o no)<br>
+        <br />
+    </samp></p>
+    <p>Configurar la vlan en un router</p>
+    <p><samp><br />
+        Ro>enable<br />
+        Ro#configure terminal<br />
+        Ro(config)interface fastEthernet -numero- //(ej:0/0.5) el numero despues del punto tiene que ser igual a la vlan q estes configurando <br />
+        Ro(config-subif)
+        <br />
+    </samp></p>
+    <p>Configurar la ip de cada vlan en un router</p>
+    <p><samp><br />
+        Ro>enable<br />
+        Ro#configure terminal<br />
+        Ro(config)interface fastEthernet -numero- //(ej:0/0.5) el numero despues del punto tiene que ser igual a la vlan q estes configurando <br />
+        Ro(config-subif)encapsulation dot1Q -numero- //(ej: 5 ) el numero tiene que ser igual a la vlan q estes configurando <br />
+        Ro(config-subif) ip address -ip- -mascara- //la ip y la mascara seran las de la red (ej: 192.170.0.1 255.255.255.0 ) <br>
+        Ro(config-subif)no sh //para que se encienda  <br>
+        <br />
+    </samp></p>
+    <p>Configurar la ip de cada vlan en un router</p>
+    <p><samp><br />
+        Ro>enable<br />
+        Ro#configure terminal<br />
+        Ro(config)interface fastEthernet -numero- //(ej:0/0.5) el numero despues del punto tiene que ser igual a la vlan q estes configurando <br />
+        Ro(config-subif)encapsulation dot1Q -numero- //(ej: 5 ) el numero tiene que ser igual a la vlan q estes configurando <br />
+        Ro(config-subif) ip address -ip- -mascara- //la ip y la mascara seran las de la red (ej: 192.170.0.1 255.255.255.0 ) <br>
+        Ro(config-subif)no sh //para que se encienda  <br>
+        <br />
+    </samp></p>
+    <p>Ejercicios de ejemplo.</p>
+    <samp><br />
+    <a href="https://imgur.com/gallery/jNBpgGR" target="_blank" rel="noopener noreferrer">Ejecicio 1 ejemplo.</a><br>
+    <br>
+    <a href="https://imgur.com/gallery/wbGjykm" target="_blank" rel="noopener noreferrer">Ejecicio 2 ejemplo.</a><br>
+    <br>
+    <a href="https://imgur.com/gallery/0YgStNe" target="_blank" rel="noopener noreferrer">Ejecicio 3 ejemplo.</a><br>
+    <br>
+    </samp><br />
+    <p>Activar Protoclo LACP</p>
+    <p><samp><br />
+        sw1>enable<br />
+        sw1#configure terminal<br />
+        sw1(config)interface range fastEthernet -rango-  //configurar rango(ej:0/1-2)<br />
+        sw1(config-if-range)channel-protocol lacp  //activar el lacp<br />
+        sw1(config-if-range)channel-group 1 mode active  //identificador del grupo (depende de cuantos pida se van creando)<br />
+        <br />
+        //ahora configuaramos el swcht2<br />
+        <br />
+        sw1>enable<br />
+        sw1#configure terminal<br />
+        sw1(config)interface range fastEthernet -rango-  //configurar rango(ej:0/1-2)<br />
+        sw1(config-if-range)channel-protocol lacp  //activar el lacp<br />
+        sw1(config-if-range)channel-group 1 mode passive  //identificador del grupo (depende de cuantos pida se van creando)<br />
+        <br />
+    </samp></p>
+    <p>Ver la informacion del grupo LACP</p>
+    <p><samp><br />
+        sw1>enable<br />
+        sw1#show etherchannel<br />
+        <br />
+        //o tambien<br />
+        <br />
+        sw1>enable<br />
+        sw1#show etherchannel summary<br />
+        <br />
+    </samp></p>
+    <p>Puerto espejo</p>
+    <p><samp><br />
+        sw1>enable<br />
+        sw1#configure terminal<br />
+        sw1(config)vlan -numero-  //ej: ( 2 )<br />
+        sw1(config-vlan)name -nombre-  //ej: ( ZONA_A )<br />
+        sw1(config)vlan -numero-  //ej: ( 3 )<br />
+        sw1(config-vlan)name -nombre-  //ej: ( ZONA_B )<br />
+        sw1(config)interface fastEthernet -puerto- //ej: ( 0/1 )<br />
+        sw1(config-if)switchport access vlan -numero- //ej: ( 2 ) <br>
+        sw1(config)interface fastEthernet -puerto- //ej: ( 0/4 )<br />
+        sw1(config-if)switchport access vlan -numero- //ej: ( 4 ) <br>
+        sw1(config)monitor session 1 source interface -puerto- //ej: ( fa0/4 ) origen <br>
+        sw1(config)monitor session 1 destination interface -puerto- //ej: ( fa0/1 ) destino <br>
+        <br />
+        //ahora configuaramos una ip<br />
+        <br />
+        sw1>enable<br />
+        sw1#configure terminal<br />
+        sw1(config)int vlan -numero- //ej: ( 2 )<br />
+        sw1(config-if)ip address -ip- -mascara-       //asignamos la IP/mascara al switch.<br />
+        sw1(config-subif)no sh  //para que se encienda  <br>
+        sw1(config)int vlan -numero- //ej: ( 3 )<br />
+        sw1(config-if)ip address -ip- -mascara-       //asignamos la IP/mascara al switch.<br />
+        sw1(config-subif)no sh  //para que se encienda  <br>
+        <br />
+        //ver el monitor<br />
+        <br />
+        sw1>enable<br />
+        sw1#show monitor //o esta opcion<br />
+        sw1#show monitor detail //o esta opcion<br />
+        <br />
+        <p>Tablas de enrrutamiento</p>
+    </samp></p>
+    <embed src="https://lumerp.github.io/Unidad%205.2%20-%20Practica%205_Eduardo_Veiga%20(4).pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="1000px" />
+<style >
+.cajas{
+left: 30%;
+position: absolute;
+}
+
+samp {
+  background: #000;
+  border: 3px groove #ccc;
+  color: #ccc;
+  display: block;
+  padding: 5px;
+  width: 800px;
+  font-size: 11px;
+ }
+
+</style>
+</body>
+</html>
