@@ -271,6 +271,99 @@
     <p>Aloxa particions loxicas: Particion extendida.</p><br />
     <p>No sistema DOS, so pode haber un maximo de 4, Ademais permite a instalacion do SO: Particions primarias.</p><br />
     <p>Non permiten a instalacion de SO, pero podense facer cantas se precisen (non hai limite): Particions loxicas.</p><br />
+    <br />
+    <br />
+    <p style="font-size: 35px;">SOM2</p>
+    <br />
+    <br />
+    <br />
+    <br />
+    <p style="font-size: 28px;">PARTE DE DEBIAN 11</p>
+    <br />
+    <br />
+    <p>Mostrar os procesos executados polo teu usuario.</p>
+    <p><samp><br />
+    ps -u nombredeusuario<br />
+    <br /></samp></p>
+    <p>Mostrar todos os procesos ordenados por uso da CPU.</p>
+    <p><samp><br />
+    ps -e --sort=-pcpu<br />
+    <br /></samp></p>
+    <p>Mostrar todos os procesos indicando o PID, UID, memoria
+        utilizada, prioridade e comando completo.</p>
+    <p><samp><br />
+    ps -eo pid,uid,nice,cmd,pcpu --sort=-pcpu<br />
+    <br /></samp></p>
+    <p>Cantos procesos ten correndo e cantos durmindo o teu user?</p>
+    <p><samp><br />
+    top<br />
+    <br /></samp></p>
+    <p>Desde cando leva encencida a maquina?</p>
+    <p><samp><br />
+    uptime<br />
+    <br /></samp></p>
+    <p>Para pasar unha tarefa a primeiro plano:</p>
+    <p><samp><br />
+    fg 1 //(hai que pasarlle o numero de tarefa que devolve o comando jobs!)<br />
+    <br /></samp></p>
+    <p>Para consultar tarefas activas</p>
+    <p><samp><br />
+    jobs<br />
+    <br /></samp></p>
+    <p>Para pasar unha tarefa a segundo plano</p>
+    <p><samp><br />
+    bg 1 //(hai que pasarlle o numero de tarefa que devolve o comando jobs!)<br />
+    <br /></samp></p>
+    <p>Executar unha tarefa en segundo</p>
+    <p><samp><br />
+    slepp 1000 &<br />
+    <br /></samp></p>
+    <p>Detener un Proceso</p>
+    <p><samp><br />
+    ps -u edu -o pid,cmd   //primero miramos el pid<br />
+    kill -19 numpid  //detener el proceso  usando el -9 se mata y el -15 se mata lento<br />
+    kill -18 numpid  //iniciamos el proceso<br />
+    <br /></samp></p>
+    <p>Iniciar un Proceso</p>
+    <p><samp><br />
+    ps -u edu -o pid,cmd   //primero miramos el pid<br />
+    kill -18 numpid  //iniciamos el proceso<br />
+    <br /></samp></p>
+    <p>Indicar que tempo tarda o computador en buscar un ficheiro</p>
+    <p><samp><br />
+    time find / -iname dhclient.conf <br />
+    <br /></samp></p>
+    <p>Realiza unha listaxe que mostre a prioridade dos procesosdos usuarios</p>
+    <p><samp><br />
+    ps -eo pid,uid,cmd,nice --sort=+nice<br />
+    <br /></samp></p>
+    <p>Modifica a prioridade dun proceso en execucion e outro dormido</p>
+    <p><samp><br />
+    nice -n -5 yes  //(se ejecuta el programa yes se deja ahi y se abre en otra nueva ventana y se analiza con 'ps')<br />
+    ps -el //para ver todos los procesos<br />
+    renice 7 numePID   //(cambiar prioridad de algo que se esta ejecutando)<br />
+    <br /></samp></p>
+    <p>Identifica os seguintes servizos no directorio /etc/init.d</p>
+    <p><samp><br />
+    ls /etc/init.d <br />
+    <br /></samp></p>
+    <p>Instalar netstat</p>
+    <p><samp><br />
+    apt install net-tools //como root<br />
+    <br /></samp></p>
+    <p>Instalar netstat</p>
+    <p><samp><br />
+    apt install openssh-server //como root<br />
+    <br /></samp></p>
+    <p>Comprobar o servizo de rede SSH</p>
+    <p><samp><br />
+    sudo service ssh status<br />
+    <br /></samp></p>
+    <p>Comando putan</p>
+    <p><samp><br />
+    netstat -putan<br />
+    <br /></samp></p>
+    <embed src="https://lumerp.github.io/Práctica%202%20-%20Xestión%20de%20procesos%20en%20Windows_Eduardo_Veiga_Cristobo%20(1).pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="1000px" />
 <style >
 .cajas{
 left: 30%;
