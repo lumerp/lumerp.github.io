@@ -432,6 +432,82 @@ sw#switchport port-security aging time -minutos-<br />
     <a class="boton2" style="text-decoration: none;  padding: 5px;  font-weight: 6;  font-family: Comic Sans MS,arial; font-size: 20px; color: #ffffff;  background-color: #ff0000; border-radius: 50px; border: 2px solid #000000;" href="https://lumerp.github.io/Redes_Repaso.pkt" download="Redes_Repaso.pkt">DESCARGAR</a>
     <br />
     <br />
+    <br />
+    <br />
+    <p style="font-size: 28px;">UNIDAD 7</p>
+    <br />
+    <br />
+    <p>Instalar Nagios Core en Ubuntu 20.04</p>
+    <p><samp><br />
+        apt update<br />
+        apt upgrade<br />
+        apt install autoconf gcc libc6 make wget unzip <br />
+        apt install apache2 php libapache2-mod-php libgd-dev -y <br>
+        wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.6.tar.gz <br>
+        tar zxvf nagios-4.4.6.tar.gz <br>
+        cd nagios-4.4.6 <br> 
+        ./configure --with-httpd-conf=/etc/apache2/sites-enabled <br>
+        make all <br>
+        make install-groups-users <br>
+        usermod -aG nagios www-data <br>
+        make install <br>
+        make install-init <br>
+        make install-daemoninit <br>
+        make install-commandmode <br>
+        make install-config <br>
+        make install-webconf <br>
+        a2enmod rewrite <br>
+        a2enmod cgi <br>
+        htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin <br>
+        systemctl enable --now nagios <br>
+        systemctl status nagios <br>
+        systemctl restart apache2 <br>
+        systemctl enable --now apache2  <br>
+        <br />
+        <a href="https://www.ochobitshacenunbyte.com/2021/01/11/como-instalar-nagios-core-en-ubuntu-20-04/" target="_blank" rel="noopener noreferrer">Pagina de referencia</a><br>
+       <br />
+    </samp></p>
+    <p>Accedemos desde nuestro navegador favorito, http://IP-o-nombre-del-servidor-web/nagios (en nuestro caso [localhost/nagios])</p><br>
+    <p>Instalar ZenMap en Ubuntu 20.04</p>
+    <p><samp><br />
+        apt update<br />
+        sudo apt install nmap<br />
+        wget http://archive.ubuntu.com/ubuntu/pool/universe/p/pygtk/python-gtk2_2.24.0-5.1ubuntu2_amd64.deb<br />
+        sudo apt install ./python-gtk2_2.24.0-5.1ubuntu2_amd64.deb  <br>
+        wget http://archive.ubuntu.com/ubuntu/pool/universe/n/nmap/zenmap_7.60-1ubuntu5_all.deb <br>
+        sudo apt install ./zenmap_7.60-1ubuntu5_all.deb <br>
+        sudo zenmap  ///// lo iniciamos como admin <br> 
+        <br />
+        <a href="https://www.how2shout.com/linux/install-zenmap-nmap-gui-on-ubuntu-20-04-lts-linux/" target="_blank" rel="noopener noreferrer">Pagina de referencia</a><br>
+       <br />
+    </samp></p><br>
+    <p>Tcpdump Command en Ubuntu 20.04</p>
+    <p><samp><br />
+        sudo apt update<br />
+        sudo apt install tcpdump<br />
+        <br />
+        <a href="https://linuxways.net/ubuntu/how-to-use-tcpdump-command-in-ubuntu-20-04/" target="_blank" rel="noopener noreferrer">Pagina de referencia</a><br>
+       <br />
+    </samp></p><br>
+    <p>Practicas</p>
+    <embed src="https://lumerp.github.io/Unidad-7-Practica-3_Eduardo_Veiga.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="60%" height="1000px" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <embed src="https://lumerp.github.io/Unidad-7-Practica-2_Eduardo_Veiga.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="60%" height="1000px" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <embed src="https://lumerp.github.io/Unidad-7-Practica-5_Eduardo_Veiga.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="60%" height="1000px" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <embed src="https://lumerp.github.io/Unidad-7-Practica-6_Eduardo_Veiga.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="60%" height="1000px" />
+    <br />
+    <br />
 <style >
 .cajas{
 left: 30%;
