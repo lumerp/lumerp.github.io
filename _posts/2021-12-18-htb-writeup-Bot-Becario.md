@@ -1,7 +1,7 @@
 ---
 layout: single
-title: Bot Becario ON - Changelog
-excerpt: "Bot Becario ON de nuevo :) !!!"
+title: Bot Becario - Changelog
+excerpt: "Changelog !!!"
 date: 2021-12-18
 classes: wide
 comments: true
@@ -14,14 +14,6 @@ categories:
 tags:  
   - Changelog
 ---
-
-Despues de casi 3 semanas el bot de discord @BECARIO vuelve a funcionar.
-
-Si ves algun bug comentalo en los cometarios.
-
-El bot actualmente se encuentra hosteado en Heroku.
-
-Actualmente cuenta con 18 funciones.
 
 Cambios:
 
