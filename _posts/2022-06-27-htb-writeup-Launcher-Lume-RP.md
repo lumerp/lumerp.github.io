@@ -17,5 +17,3 @@ tags:
         
 ![](/assets/images/post7/launcher1.png)
 ![](/assets/images/post7/launcher2.png)
-
-<a href="/assets/launcher/Lume-RP.exe" download="Lume RP.exe">DESCARGAR</a>
