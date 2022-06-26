@@ -17,5 +17,3 @@ tags:
         
 ![](/assets/images/post7/launcher1.png)
 ![](/assets/images/post7/launcher2.png)
-
-<a class="boton2" style="text-decoration: none;  padding: 5px;  font-weight: 6;  font-family: Comic Sans MS,arial; font-size: 20px; color: #ffffff;  background-color: #ff0000; border-radius: 50px; border: 2px solid #000000;" href="/assets/launcher/Lume-RP.exe" download="Redes_Repaso.pkt">DESCARGAR</a>
