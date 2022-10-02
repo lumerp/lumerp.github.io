@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>SOM</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<div class="footer-basic">
+    <footer>
+        <div class="social"><a href="https://www.instagram.com/debian/"><i class="icon ion-social-instagram"></i></a><a href="https://twitter.com/debian"><i class="icon ion-social-twitter"></i></a></div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://www.debian.org">Home</a></li>
+            <li class="list-inline-item"><a href="https://lumerp.github.io/year-archive/">Posts</a></li>
+            <li class="list-inline-item"><a href="https://lumerp.github.io/about/">About</a></li>
+        </ul>
+        <p class="copyright">Debian11</p>
+    </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<style>
+    .footer-basic {
+  padding:9px 0;
+  background-color:#000000;
+  color:#89b8e7;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1;
+}
+
+.footer-basic .social {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer-basic .social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+</style>
+</head>
+<body style="background-color: rgb(213, 181, 223);">
+ <div class="cajas">
+    <br />
+    <br />
+    <p style="font-size: 28px;">Tecnicas de cifrado en Debian 11</p>
+    <br />
+    <br />
+    <p>Cifrar y descifrar, simetricamente con gpg usando ascii (nos devolvera un archivo con extension .asc)</p>
+    <p><samp><br />
+    sudo gpg -c -a archivo.txt<br />
+    --------------------------<br>
+    Descifrar        <br>
+    --------------------------<br>
+    sudo gpg -a -d archivo.txt.asc > archivodescifrado.txt<br />
+    <br /></samp></p>
+    <p>Crear una clave -base64 de 48 caracteres usando aes-128 y guardar en un archivo</p>
+    <p><samp><br />
+    openssl rand -base64 48 > nombrekey.key<br />
+    <br /></samp></p>
+    <p>Cifrar y descifrar, simetricamente con openssl usando aes-128 y la clave creada anteriormente</p>
+    <p><samp><br />
+    openssl enc -e -aes128 -pass file:nombrekey.key -in archivo-para-cifrar.txt -out archivo-cifrado.txt<br/>
+    --------------------------<br>
+    Descifrar        <br>
+    --------------------------<br>
+    openssl enc -d -aes128 -pass file:nombrekey.key -in archivo-cifrado.txt -out archivo-descifrado.txt<br />
+    <br /></samp></p>
+    <p>Genera un par de claves con gpg usando nombre y email (cifrado asimetrico)</p>
+    <p><samp><br />
+    gpg --full-generate-key<br/>
+    <br /></samp></p>
+    <p>Comprobar lista de claves y exportar clave publica</p>
+    <p><samp><br />
+    gpg --list-keys<br/>
+    ---------------<br>
+    Exportar clave <br>
+    ---------------<br>
+    gpg --out clavepublica.gpg --export "gmail/nombre-de-la-clave-a-exportar"<br/>
+    <br /></samp></p>
+    <p>Importar clave publica a gpg</p>
+    <p><samp><br />
+    gpg --import clavepublica.gpg<br/>
+    <br /></samp></p>
+    <p>Cifrar con clave publica y descifrar (gpg)</p>
+    <p><samp><br />
+    gpg --output cifrado-clave-publica.gpg --encrypt --recipient email@gmail.com/nombre archivo-para-cifrar.txt<br/>
+    -----------------------------------------------------------------------------------------------------------<br>
+    Descifrar  para hacerlo debemos tener la clave importada a gpg<br>
+    -----------------------------------------------------------------------------------------------------------<br>
+    gpg --output archivo-descifrado.txt --decrypt cifrado-clave-publica.gpg<br>
+    <br /></samp></p>
+    <p>Generar un par de claves con openssl RSA (cifrado asimetrico openssl usando RSA) </p>
+    <p><samp><br />
+    openssl genrsa -out claveprivada.key -passout pass:contrasena -des 1024<br/>
+    -----------------------------------------------------------------------<br>
+    Generar la clave publica apartir de la privada <br>
+    -----------------------------------------------------------------------<br>
+    openssl rsa -in claveprivada.key -pubout -out clavepublica.key -passin pass:contrasena<br>
+    <br /></samp></p>
+    <p>Cifrar con clave publica y descifrar (openssl)</p>
+    <p><samp><br />
+    openssl rsautl -encrypt -pubin -inkey clavepublica.key -in archivo-para-cifrar.txt -out archivo-cifrado.enc <br/>
+    -----------------------------------------------------------------------------------------------------------<br>
+    Descifrar  para hacerlo debemos tener clave privada a la que pertenezca la publica con la que se cifro<br>
+    -----------------------------------------------------------------------------------------------------------<br>
+    openssl rsautl -decrypt -inkey miclaveprivada.key -in archivo-cifrado.enc -out archivo-descifrado.txt<br>
+    <br /></samp></p>
+    <p style="font-size: 28px;">Utilidades para chequear la integridad del sistema Windows, Debian11</p>
+    <p>Hacer examen del sistema windows (Usando SFC en windows)</p>
+    <p><samp><br />
+    sfc /scannow <br/>
+    <br /></samp></p>
+    <p>Comprobar la ejecucion del comando sfc en el registro del sistema </p>
+    <p><samp><br />
+    type c:\Windows\Logs\CBS\CBS.log <br/>
+    <br /></samp></p>
+    <p>Instalar rkhunter </p>
+    <p><samp><br />
+    sudo apt install rkhunter <br/>
+    <br /></samp></p>
+    <p>Comprobar sistema debian11 con rkhunter </p>
+    <p><samp><br />
+    sudo rkhunter --check <br/>
+    <br /></samp></p>
+    <p>Comprobar sistema debian11 con rkhunter y guardar en archivo </p>
+    <p><samp><br />
+    sudo rkhunter --check > rkhunter.txt <br/>
+    <br /></samp></p>
+    <p>Ver todas las opciones de rkhunter </p>
+    <p><samp><br />
+    rkhunter --help <br/>
+    <br /></samp></p>
+    <p>Hacer busqueda con rkhunter de hidden_procs (procesos ocultos) </p>
+    <p><samp><br />
+    rkhunter --enable hidden_procs <br/>
+    <br /></samp></p>
+    <p>Hacer busqueda con rkhunter de todo menos de los comandos </p>
+    <p><samp><br />
+    rkhunter --disable system_commands <br/>
+    <br /></samp></p>
+    <p>Hacer busqueda con rkhunter solo de los rootkits </p>
+    <p><samp><br />
+    rkhunter --disable system_commands <br/>
+    <br /></samp></p>  
+    <p>Hacer busqueda con rkhunter solo de los rootkits </p>
+    <p><samp><br />
+    rkhunter --enable rootkits <br/>
+    <br /></samp></p>
+    <p>Ver archivo de contrasena del sistema ($ es el indicador de la funcion hash) </p>
+    <p><samp><br />
+    cat /etc/passwd <br/>
+    <br /></samp></p> 
+    <p>Generar resumen con md5 de un archivo</p>
+    <p><samp><br />
+    echo -n "texto del archivo">archivo-ejemplo.txt | md5sum <br/>
+    <br /></samp></p> 
+    <p>Usar openssl para generar un resumen con la funcion hash SHA256</p>
+    <p><samp><br />
+    echo -n "texto del archivo">archivo-ejemplo2.txt | openssl dgst -sha256 <br/>
+    <br /></samp></p> 
+    <p>Descargar un archivo y comprobar integridad con md5</p>
+    <p><samp><br />
+    md5sum paquete-ejemplo.deb <br/>
+    <br /></samp></p> 
+    <p style="font-size: 28px;">Firma y Cifrado de documentos (gpg)</p>
+    <p>Firmar digitalmente un documento y cifrarlo (gpg)</p>
+    <p><samp><br />
+    Firmar el documento<br>
+    ---------------------------------------------<br>
+    gpg --output ejemplodefirma.sig --detach-sign  <br/>
+    ---------------------------------------------<br>
+    Cifrar el documento con una clave de gpg<br>
+    ---------------------------------------------<br>
+    gpg --output archivo-cifrado-firmado.gpg --encrypt --recipient  email@gmail.com/nombre archivo-para-cifrar.txt<br>
+    <br /></samp></p>
+    <p>Descifrar y confirmar firma </p>
+    <p><samp><br />
+    Descifrar el documento<br>
+    ---------------------------------------------<br>
+    gpg --output archivo-descifrado-firmado.txt --decrypt archivo-cifrado-firmado.gpg  <br/>
+    ---------------------------------------------<br>
+    Verificar Firma del archivo<br>
+    ---------------------------------------------<br>
+    gpg --verify ejemplodefirma.sig archivo-descifrado-firmado.txt<br>
+    <br /></samp></p>
+    <p style="font-size: 28px;">Firma y Cifrado de documentos (openssl)</p>
+    <p>Firmar digitalmente un documento y cifrarlo (openssl)</p>
+    <p><samp><br />
+    Generar clave rsa<br>
+    -----------------------------------------<br>
+    openssl genrsa -out claveprivada.key 1024 <br/>
+    -----------------------------------------<br>
+    Firmar un documento y exportar clave<br>
+    -----------------------------------------<br>
+    openssl dgst -c -sign claveprivada.key -out ejemplodefirma2.sig archivo-para-firmar.txt<br>
+    ---------------------------------------------------------------------------------------<br>
+    Exportar clave publica apartir de una privada<br>
+    ---------------------------------------------------------------------------------------<br>
+    openssl rsa -in claveprivada.key -pubout -out clavepublica.key<br>
+    --------------------------------------------------------------<br>
+    Cifrar archivo con openssl<br>
+    --------------------------------------------------------------<br>
+    openssl rsautl -encrypt -pubin -inkey clavepublica2.key -in archivo-para-firmar.txt -out archivo-para-firmar-cifrado.enc <br>
+    <br /></samp></p>
+    <p>Descifrar y confirmar firma (openssl)</p>
+    <p><samp><br />
+    Descifrar el documento<br>
+    ----------------------------------------------------------------------------------------------------------------------------<br>
+    openssl rsautl -decrypt -inkey claveprivada.key -in archivo-para-firmar-cifrado.enc -out archivo-para-firmar-descifrado.txt <br/>
+    ----------------------------------------------------------------------------------------------------------------------------<br>
+    Verificar Firma del archivo<br>
+    ----------------------------------------------------------------------------------------------------------<br>
+    openssl dgst -c -verify clavepublica.key -signature ejemplodefirma2.sig archivo-para-firmar-descifrado.txt<br>
+    <br /></samp></p>
+    <p>Ayudas</p>
+    <samp><br />
+    <a href="https://www.genbeta.com/desarrollo/manual-de-gpg-cifra-y-envia-datos-de-forma-segura" target="_blank" rel="noopener noreferrer">Pagina 1</a><br>
+    <br>
+    </samp><br /> 
+<style >
+.cajas{
+left: 30%;
+position: absolute;
+}
+
+samp {
+  background: #000;
+  border: 3px groove #ccc;
+  color: #ccc;
+  display: block;
+  padding: 5px;
+  width: 800px;
+  font-size: 11px;
+ }
+</style>
+</body>
+</html>
