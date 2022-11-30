@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>SOM</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<div class="footer-basic">
+    <footer>
+        <div class="social"><a href="https://www.instagram.com/eduu.vc"><i class="icon ion-social-instagram"></i></a><a href="https://twitter.com/bttweed_"><i class="icon ion-social-twitter"></i></a></div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://lumerp.github.io">Home</a></li>
+            <li class="list-inline-item"><a href="https://lumerp.github.io/year-archive/">Posts</a></li>
+            <li class="list-inline-item"><a href="https://lumerp.github.io/about/">About</a></li>
+        </ul>
+        <p class="copyright">eduu.vc</p>
+    </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<style>
+    .footer-basic {
+  padding:9px 0;
+  background-color:#000000;
+  color:#89b8e7;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1;
+}
+
+.footer-basic .social {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer-basic .social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+</style>
+</head>
+<body style="background-color: rgb(213, 181, 223);">
+ <div class="cajas">
+    <br />
+    <br />
+    <p style="font-size: 28px;">PARTE DE DEBIAN 11</p>
+    <br />
+    <br />
+<p>Entrar a fsdisk</p>
+
+<p><samp><br />
+    fdisk /dev/sdb<br />
+    <br /></samp></p>
+<p>Amosar a listaxe de discos do equipo</p>
+
+<p><samp><br />
+    fdisk -l <br />
+    <br /></samp></p>
+  <p>Gardar a nova taboa de particions.</p>
+    <p><samp><br />
+           Tecla w<br />
+                   <br />
+
+    </samp></p>
+<p>Formatear as particions</p>
+    <a><samp><br />
+        mkfs.ext4 -L PRIMEIRA /dev/sdb1      ////ext4<br />
+        mkfs.xfs  -L SEGUNDA /dev/sdb2     ////xfs ////apt-get install xfsprogs<br />
+        mkfs.ntfs -f -L WINDOWS /dev/sdb3     ////ntfs<br />
+        <br />
+    </samp></a>
+    <p>Montar a particion manualmente, como so lectura</p>
+    <p><samp><br />
+       mount -o ro /dev/sdb1 /mnt/pmsdb1    //cambiar por directorio que se solicite; volatil<br />
+        <br />
+    </samp></p>
+<p>Crear una entrada en fstab de WINDOWS</p>
+    <p><samp><br />
+        UUID=131028A378523564 /home/windows-data ntfs-3g auto,rw,users,umask=000 0 0 //non volatil //fstab /etc/fstab<br />
+        <br />
+    </samp></p>
+<p>Analizar a particion, para desfragmentar en Linux.</p>
+    <p><samp><br />
+        fsck -fn /dev/sda6<br />
+            <br />
+    </samp></p>
+<p>Desfragmentar esa particion.</p>
+    <p><samp><br />
+        e4defrag /dev/sda6<br />
+        <br />
+    </samp></p>
+<p>Instalar as Guest Additions.</p>
+    <p><samp><br />
+        cd /media/cdrom0    ///sin ser root<br />
+        sh autorun.sh    ///sin ser root<br />
+        <br />
+    </samp></p>
+<p>Compartir Usando NFS</p>
+    <p><samp><br />
+        apt install nfs-kernel-server   ///instalar en maquina desde la que queremos compartir<br />
+        /home/edu/Escritorio/compartirv2 192.168.100.0/255.255.255.0 (ro)  //escribi en /etc/exports<br />
+        service nfs-kernel-server restart    //despues de modificar reiniciar <br />
+        <br />
+        Maquina que recibe<br />
+        apt-get install nfs-common portmap  ///intalar depencias<br />
+        mount 192.168.100.1:/home/edu/Escritorio/compartirv2 /mnt/prueba2  ///crear punto de montaje de debian11 //volatil<br />
+        192.168.100.3:/home/edu/Escritorio/compartir /mnt/prueba2 nfs rw 0 0 ///crear punto de montaje de debian11 //no volatil en /etc/fstab<br />
+        <br />
+    </samp></p>
+<p>Montar carpeta compartida de wind en debian11</p>
+    <p><samp><br />
+        mount -t cifs //192.168.100.3/prueba /mnt/prueba -o user=(tuUsuario)<br />
+        <br />
+    </samp></p>
+    <br />
+    <br />
+<p style="font-size: 28px;">PARTE DE WINDOWS</p>
+<br />
+<br />
+<p>Entrar en DISKPART</p>
+    <p><samp><br />
+        DISKPART  ///abrir cmd<br />
+        <br />
+    </samp></p>
+<p>Amosar a listaxe de discos do equipo</p>
+    <p><samp><br />
+        list disk<br />
+        <br />
+    </samp></p>
+<p>Crear duas particions primarias</p>
+    <p><samp><br />
+    select disk 1<br />
+    create partition primary size=1000<br />
+    create partition primary size=3000<br />
+        <br />
+    </samp></p>
+<p>Gardar a nova taboa de particions.</p>
+    <p><samp><br />
+    active<br />
+    <br />
+    </samp></p>
+<p>Amosar as particion do disco.</p>
+    <p><samp><br />
+    list volume<br />
+<br />
+    </samp></p>
+<p>Formatear as particions</p>
+    <p><samp><br />
+        select volume 4<br />
+        format fs=NTFS label"WINDOWS" quick //NTFS<br />
+        select volume 3<br />
+        format fs=fat32 label"WINDOWS" quick //fat32<br />
+       <br />
+    </samp></p>
+<p>Comproba que non hai sectores defectuosos</p>
+    <p><samp><br />
+        chkdsk 1 //ejemplo volumen 1<br />
+        <br />
+    </samp></p>
+<p>Desfragmentar o disco</p>
+    <p><samp><br />
+        defrag C:  ///ejemplo C:<br />
+        <br />
+    </samp></p>
+    <br />
+    <br />
+<p style="font-size: 28px;">TEORIA</p>
+<br />
+<br />
+    <p style="font-size: 20px;">1-Indica o comando para montar o dispositivo de almacenamento "sdc" no punto de montaxe /mnt/sdcPM :</p><br />
+    <p>mount /dev/sdc /mnt/sdcPM</p><br />
+    <p style="font-size: 20px;">2-Indica o comando en Linux para formatar a particion sdb1 co sistema de arquivos ext3, etiquetandoa como P1sdb:</p><br />
+    <p>mkfs.ext3 -L P1sdb /dev/sdb1</p><br />
+    <p style="font-size: 20px;">3-"Un volume basico formado por un unico anaco dun unico disco, podese dicir que e equivalente a unha particion.<br /> Un volume dinamico, formado por varios anacos procedentes dun ou mais discos, non e unha particion."</p><br />
+    <p>verdadeiro</p><br />
+    <p style="font-size: 20px;">4-"Dada a seguinte imaxe identifica:</p><br />
+    <p>Tipo de memoria que representa: interna</p><br />
+    <p>Tipo de particionado: MVT</p><br />
+    <p>Tipo de fragmentacion: externa</p><br />
+    <p style="font-size: 20px;">5-Completa:</p><br />
+    <p>A memoria interna crea espazos chamados (Particions) para aloxar os procesos</p><br />
+    <p>(Particionado de tamano fixo): A opcion mais sinxela.</p><br />
+    <p>Este mecanismo denominase historicamente (MFT ( multiprogramacion cun numero fixo de tarefas))</p><br />
+    <p>da particion (fragmentacion (interna))</p><br />
+    <p>(Particionado variable):A alternativa e o particionado variable da memoria</p><br />
+    <p>que se denomina (MVT( multiprogramacion cun numero variable de tarefas))</p><br />
+    <p>degradacion da memoria e fragmentacion (externa)</p><br />
+    <p style="font-size: 20px;">6-Cando queremos que un dispositivo de almacenamento se monte automaticamente, ao iniciar o sistema operativo,<br> e necesario indicar o punto de montaxe do mesmo no ficheiro de configuracion....</p><br />
+    <p>/etc/fstab</p><br />
+    <p style="font-size: 20px;">7-Contesta as seguintes preguntas sobre dispositivos de memoria en Linux:</p><br />
+    <p>Os dispositivos de memoria secundaria son perifericos de tipo: (Bloque)</p><br />
+    <p>Os seus arquivos que representan os dispositivos de memoria secundaria no SO, estan no directorio (indica a ruta absoluta deste directorio): (/dev)</p><br />
+    <p style="font-size: 20px;">8-O componente do SO responsable de administrar a memoria denominase ....</p><br />
+    <p>administrador da memoria</p><br />
+    <p style="font-size: 20px;">9-"O rendemento do computador sera tanto mellor canto maior sexa a velocidade de computacion,<br> o cal implica a maior carga posible de procesos en memoria externa."</p><br />
+    <p>Falso</p><br />
+    <p style="font-size: 20px;">10-Indica a orde en que deben realizarse as tarefas de administracion necesarias, identificandoas polos comandos <br> empregados para realizalas, para poder empregar un dispositivo de almacenamento nun servidor Linux:</p><br />
+    <p>fdisk</p><br />
+    <p>mkfs</p><br />
+    <p>mkdir</p><br />
+    <p>mount</p><br />
+    <p style="font-size: 20px;">11-Relaciona as distintas tecnicas de optimizacion da memoria interna coa sua definicion:</p><br />
+    <p>Esta tecnica permite o uso de memoria secundaria para intercambiar certos procesos, co obxectivo de que outros <br> (normalmente de maior prioridade) poidan entrar en memoria interna: Swap</p><br />
+    <p>Esta tecnica permite dividir un proceso en anacos (de igual tamano ou non, dependendo da tecnica), o cal permite <br> que haxa maior numero de procesos na memoria interna a vez: Paxinacion e segmentacion</p><br />
+    <p>Require a paxinacion ou segmentacion dos procesos. Esta tecnica so carga en memoria interna certas paxinas dos <br> procesos (non os procesos enteiros) deixando o resto na memoria secundaria: Memoria interna</p><br />
+    <p style="font-size: 20px;">12-Ordea os pasos a dar para crear unha unidade de almacenamento en Linux.</p><br />
+    <p>Crear a particion ou volume</p><br />
+    <p>Aplicar o sistema de arquivos</p><br />
+    <p>Montar a unidade</p><br />
+    <p>Incluir a sua informacion no fstab</p><br />
+    <p style="font-size: 20px;">13-Relaciona:</p><br />
+    <p>Desfragmentar a primeira particion do segundo disco: e4defrag /dev/sdb1</p><br />
+    <p>Montar unha unidade de almacenamento Windows: mount -t ntfs-3g /dev/sdb1 /mnt</p><br />
+    <p>Desfragmentar a sexta particion do primeiro disco: e4defrag /dev/sda6</p><br />
+    <p>Analizar o nivel de fragmentacion a primeira particion do segundo disco: fsck -fn /dev/sdb1</p><br />
+    <p>Formatar a primeira particion pertencente ao 3eiro disco, ponendolle unha etiqueta:  mkfs. vfat - n PICO / dev/ sdc1</p><br />
+    <p>Formatar unha particion co sistema por defecto de Linux ponendolle unha etiqueta:  mkfs. ext4 - L HOME / dev/ sda6</p><br />
+    <p>Arquivo de configuracions que une dispositivos cos seus puntos de montaxe: fstab</p><br />
+    <p>Formatar unha particion co sistema de arquivos por defecto de Windows: mkfs. ntfs - f - L PICO / dev/ sdb1</p><br />
+    <p>Montar unha unidade de almacenamento Linux de so lectura: mount -o ro /dev/sdb1 /mnt</p><br />
+    <p>Analizar se e necesario desgragmentar ou non a sexta particion do primeiro disco: e4defrag -c /dev/sda6</p><br />
+    <p>Analizar se e necesario desgragmentar ou non a primeira particion do segundo disco: e4defrag -c /dev/sdb1</p><br />
+    <p>Analizar o nivel de fragmentacion sexta particion do primeiro disco: fsck -fn /dev/sda6</p><br />
+    <p style="font-size: 20px;">14-Relaciona os tipos de particions coa sua utilidade:</p><br />
+    <p>Aloxa o sistema operativo que se arrinca por defecto: Particion activa.</p><br />
+    <p>Aloxa particions loxicas: Particion extendida.</p><br />
+    <p>No sistema DOS, so pode haber un maximo de 4, Ademais permite a instalacion do SO: Particions primarias.</p><br />
+    <p>Non permiten a instalacion de SO, pero podense facer cantas se precisen (non hai limite): Particions loxicas.</p><br />
+    <br />
+    <br />
+    <p style="font-size: 35px;">SOM2</p>
+    <br />
+    <br />
+    <br />
+    <br />
+    <p style="font-size: 28px;">PARTE DE DEBIAN 11</p>
+    <br />
+    <br />
+    <p>Mostrar os procesos executados polo teu usuario.</p>
+    <p><samp><br />
+    ps -u nombredeusuario<br />
+    <br /></samp></p>
+    <p>Mostrar todos os procesos ordenados por uso da CPU.</p>
+    <p><samp><br />
+    ps -e --sort=-pcpu<br />
+    <br /></samp></p>
+    <p>Mostrar todos os procesos indicando o PID, UID, memoria
+        utilizada, prioridade e comando completo.</p>
+    <p><samp><br />
+    ps -eo pid,uid,nice,cmd,pcpu --sort=-pcpu<br />
+    <br /></samp></p>
+    <p>Cantos procesos ten correndo e cantos durmindo o teu user?</p>
+    <p><samp><br />
+    top<br />
+    <br /></samp></p>
+    <p>Desde cando leva encencida a maquina?</p>
+    <p><samp><br />
+    uptime<br />
+    <br /></samp></p>
+    <p>Para pasar unha tarefa a primeiro plano:</p>
+    <p><samp><br />
+    fg 1 //(hai que pasarlle o numero de tarefa que devolve o comando jobs!)<br />
+    <br /></samp></p>
+    <p>Para consultar tarefas activas</p>
+    <p><samp><br />
+    jobs<br />
+    <br /></samp></p>
+    <p>Para pasar unha tarefa a segundo plano</p>
+    <p><samp><br />
+    bg 1 //(hai que pasarlle o numero de tarefa que devolve o comando jobs!)<br />
+    <br /></samp></p>
+    <p>Executar unha tarefa en segundo</p>
+    <p><samp><br />
+    slepp 1000 &<br />
+    <br /></samp></p>
+    <p>Detener un Proceso</p>
+    <p><samp><br />
+    ps -u edu -o pid,cmd   //primero miramos el pid<br />
+    kill -19 numpid  //detener el proceso  usando el -9 se mata y el -15 se mata lento<br />
+    kill -18 numpid  //iniciamos el proceso<br />
+    <br /></samp></p>
+    <p>Iniciar un Proceso</p>
+    <p><samp><br />
+    ps -u edu -o pid,cmd   //primero miramos el pid<br />
+    kill -18 numpid  //iniciamos el proceso<br />
+    <br /></samp></p>
+    <p>Indicar que tempo tarda o computador en buscar un ficheiro</p>
+    <p><samp><br />
+    time find / -iname dhclient.conf <br />
+    <br /></samp></p>
+    <p>Realiza unha listaxe que mostre a prioridade dos procesosdos usuarios</p>
+    <p><samp><br />
+    ps -eo pid,uid,cmd,nice --sort=+nice<br />
+    <br /></samp></p>
+    <p>Modifica a prioridade dun proceso en execucion e outro dormido</p>
+    <p><samp><br />
+    nice -n -5 yes  //(se ejecuta el programa yes se deja ahi y se abre en otra nueva ventana y se analiza con 'ps')<br />
+    ps -el //para ver todos los procesos<br />
+    renice 7 numePID   //(cambiar prioridad de algo que se esta ejecutando)<br />
+    <br /></samp></p>
+    <p>Identifica os seguintes servizos no directorio /etc/init.d</p>
+    <p><samp><br />
+    ls /etc/init.d <br />
+    <br /></samp></p>
+    <p>Instalar netstat</p>
+    <p><samp><br />
+    apt install net-tools //como root<br />
+    <br /></samp></p>
+    <p>Instalar netstat</p>
+    <p><samp><br />
+    apt install openssh-server //como root<br />
+    <br /></samp></p>
+    <p>Comprobar o servizo de rede SSH</p>
+    <p><samp><br />
+    sudo service ssh status<br />
+    <br /></samp></p>
+    <p>Comando putan</p>
+    <p><samp><br />
+    netstat -putan<br />
+    <br /></samp></p>
+    <embed src="https://lumerp.github.io/Práctica%201%20-%20Xestión%20de%20procesos%20en%20Linux_Eduardo_Veiga_Cristobo%20(1).pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="77.5%" height="1000px" />
+    <embed src="https://lumerp.github.io/Práctica%202%20-%20Xestión%20de%20procesos%20en%20Windows_Eduardo_Veiga_Cristobo%20(1).pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="77.5%" height="1000px" />
+    <embed src="https://lumerp.github.io/Práctica 1-XestióndeSW-21-22_Eduardo_Veiga.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="77.5%" height="1000px" />
+    <embed src="https://lumerp.github.io/Práctica2-Configuraciónderede-21-22_Eduardo_Veiga_Cristobo.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="77.5%" height="1000px" />
+    <embed src="https://lumerp.github.io/Práctica3-RecuperarAutomatizar_Eduardo_Veiga_Cristobo.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="77.5%" height="1000px" />
+    <p>Ayudas</p>
+    <samp><br />
+    <a href="https://descargar-gratis.es/programar-apagado-de-equipo-en-linux#:~:text=Apagado%20mediante%20programador%20de%20tareas%20Cron&text=Deberemos%20editar%20crontab%20para%20añadir,equipo%20según%20fechas%20y%20horas.&text=donde%20sustituiremos%3A,(del%200%20al%2023)." target="_blank" rel="noopener noreferrer">Pagina 1</a><br>
+    <br>
+    <a href="https://geekflare.com/es/crontab-linux-with-real-time-examples-and-tools/" target="_blank" rel="noopener noreferrer">Pagina 2</a><br>
+    <br>
+    <a href="https://blogfactores.wordpress.com/2015/09/20/como-saber-cual-es-el-servidor-dns-de-nuestra-maquina-linux/" target="_blank" rel="noopener noreferrer">Pagina 3 </a><br>
+    <br>
+    <br>
+    <a href="https://toquecanela.blogspot.com/2014/02/desactivando-networkmanager.html" target="_blank" rel="noopener noreferrer">Pagina 4</a><br>
+    <br>
+    <br>
+    <a href="https://installati.one/debian/11/bluefish/#install-bluefish-using-aptitude" target="_blank" rel="noopener noreferrer">Pagina 5</a><br>
+    <br>
+    <br>
+    <a href="https://techviewleo.com/install-snapd-and-use-snap-on-debian/" target="_blank" rel="noopener noreferrer">Pagina 6</a><br>
+    <br>
+    <br>
+    <a href="https://www.linuxfordevices.com/tutorials/linux/adding-users-to-sudoers#:~:text=Adding%20the%20user%20to%20the%20sudoers%20file%20is%20very%20easy,the%20sudoers%20file%20in%20detail." target="_blank" rel="noopener noreferrer">Pagina 7</a><br>
+    <br>
+    </samp><br /> 
+<style >
+.cajas{
+left: 30%;
+position: absolute;
+}
+
+samp {
+  background: #000;
+  border: 3px groove #ccc;
+  color: #ccc;
+  display: block;
+  padding: 5px;
+  width: 800px;
+  font-size: 11px;
+ }
+</style>
+</body>
+</html>
