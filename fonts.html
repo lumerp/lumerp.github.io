@@ -2,37 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" href="https://lumerp.github.io/favicon.ico" type="image/x-icon">
-    <title>Fonts Switch - LUME RP</title>
-    <meta name="description" content="Fonts Switch proporcionado por LUME RP. Letras para Instagram, copiar e pegar de forma sinxela.">
-    <meta name="robots" content="index, follow">
-    
-    <!-- SEO Avanzado -->
-    <link rel="canonical" href="https://lumerp.github.io">
-    <meta name="author" content="LUME RP">
-    
-    <!-- Open Graph (para redes sociais) -->
-    <meta property="og:locale" content="es_ES">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Fonts Switch - Letras para Instagram">
-    <meta property="og:description" content="Proporcionado por LUME RP. Letras orixinais para redes sociais.">
-    <meta property="og:url" content="https://lumerp.github.io">
-    <meta property="og:site_name" content="LUME RP">
-    <meta property="og:image" content="https://cdn.discordapp.com/attachments/767482631565606912/902219664803921970/2121.png">
-    <meta property="og:image:alt" content="Fonts Switch - Letras para Instagram">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Fonts Switch - Letras para Instagram">
-    <meta name="twitter:description" content="Letras orixinais para as túas redes sociais.">
-    <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/767482631565606912/902219664803921970/2121.png">
-  <title>LUME RP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="icon" href="https://lumerp.github.io/favicon.ico" type="image/x-icon">
+  <title>Fonts Switch - LUME RP</title>
+  <meta name="description" content="Fonts Switch proporcionado por LUME RP. Letras para Instagram, copiar e pegar de forma sinxela.">
+  <meta name="robots" content="index, follow">
+  
+  <link rel="canonical" href="https://lumerp.github.io">
+  <meta name="author" content="LUME RP">
+  
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fonts Switch - Letras para Instagram">
+  <meta property="og:description" content="Proporcionado por LUME RP. Letras orixinais para redes sociais.">
+  <meta property="og:url" content="https://lumerp.github.io">
+  <meta property="og:site_name" content="LUME RP">
+  <meta property="og:image" content="https://cdn.discordapp.com/attachments/767482631565606912/902219664803921970/2121.png">
+  <meta property="og:image:alt" content="Fonts Switch - Letras para Instagram">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fonts Switch - Letras para Instagram">
+  <meta name="twitter:description" content="Letras orixinais para as túas redes sociais.">
+  <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/767482631565606912/902219664803921970/2121.png">
+
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
     }
     .grid-container {
       max-width: 1200px;
@@ -45,11 +44,28 @@
       font-size: 24px;
       font-weight: bold;
     }
-    .inside-navigation {
-      margin-top: 20px;
+    .main-navigation {
+      background-color: #333;
+      padding: 10px 0;
     }
-    .main-title {
-      margin-bottom: 10px;
+    .main-navigation ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+    .main-navigation li {
+      margin: 0 15px;
+    }
+    .main-navigation a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    .main-navigation a:hover {
+      color: #4CAF50;
     }
     textarea {
       width: 100%;
@@ -59,6 +75,7 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       padding: 10px;
+      box-sizing: border-box;
     }
     button {
       background-color: #4CAF50;
@@ -68,19 +85,42 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
+      transition: background-color 0.3s;
     }
     button:hover {
       background-color: #45a049;
     }
-    .output {
+    .output-container {
       margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
+      position: relative;
       border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
       padding: 10px;
-      display: inline-block;
+    }
+    .output {
+      font-size: 16px;
+      font-family: monospace;
       word-wrap: break-word;
       white-space: pre-wrap;
+      margin: 0;
+      padding: 10px 10px 10px 0;
+      overflow-x: auto;
+    }
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .copy-button:hover {
+      background-color: #45a049;
     }
     footer {
       background-color: #f1f1f1;
@@ -104,23 +144,25 @@
     </div>
   </header>
 
-  <nav class="wc-menu-cart-activated main-navigation has-menu-bar-items sub-menu-right" id="site-navigation" aria-label="Principal" itemtype="https://schema.org/SiteNavigationElement" itemscope>
-    <div class="inside-navigation grid-container">
-      <ul id="primary-menu" class="main-nav">
-        <li><a href="https://www.instagram.com/eduu.vc">Instagram</a></li>
-        <li><a href="https://lumerp.github.io">Foro</a></li>
-        <li><a href="https://soundcloud.com/bttweed">Soundcloud</a></li>
-        <li><a href="https://discord.gg/7qaBQZUrYg">Discord</a></li>
-        <li><a href="https://twitter.com/bttweed_">Twitter</a></li>
-      </ul>
-    </div>
+  <nav class="main-navigation" id="site-navigation" aria-label="Principal" itemtype="https://schema.org/SiteNavigationElement" itemscope>
+    <ul id="primary-menu">
+      <li><a href="https://www.instagram.com/eduu.vc">Instagram</a></li>
+      <li><a href="https://lumerp.github.io">Foro</a></li>
+      <li><a href="https://soundcloud.com/bttweed">Soundcloud</a></li>
+      <li><a href="https://discord.gg/7qaBQZUrYg">Discord</a></li>
+      <li><a href="https://twitter.com/bttweed_">Twitter</a></li>
+    </ul>
   </nav>
 
   <main class="grid-container">
     <h2>Converter a Bold Sans-Serif</h2>
     <textarea id="inputText" placeholder="Escribe aquí o teu texto..."></textarea>
     <button onclick="convertText()">Converter</button>
-    <div class="output" id="outputText">O texto convertido aparecerá aquí</div>
+
+    <div class="output-container">
+      <pre id="outputText" class="output">O texto convertido aparecerá aquí</pre>
+      <button class="copy-button" onclick="copyText()">Copiar</button>
+    </div>
   </main>
 
   <footer class="site-info" aria-label="Sitio" itemtype="https://schema.org/WPFooter" itemscope>
@@ -136,24 +178,25 @@
       const input = document.getElementById("inputText").value;
       const output = document.getElementById("outputText");
 
-      // Función para converter caracteres ao estilo "bold sans-serif"
       function toBoldSansSerif(char) {
         const offset = {
-          A: 0x1D5D4, a: 0x1D5EE, // Maiúsculas e minúsculas.
-          "0": 0x1D7EC            // Díxitos.
+          A: 0x1D5D4, a: 0x1D5EE, "0": 0x1D7EC
         };
-
         const code = char.charCodeAt(0);
-
         if (char >= 'A' && char <= 'Z') return String.fromCodePoint(offset.A + code - 65);
         if (char >= 'a' && char <= 'z') return String.fromCodePoint(offset.a + code - 97);
         if (char >= '0' && char <= '9') return String.fromCodePoint(offset["0"] + code - 48);
-        return char; // Outros caracteres quedan iguais.
+        return char;
       }
-
-      // Converter o texto completo
       const convertedText = Array.from(input).map(toBoldSansSerif).join('');
       output.textContent = convertedText || "O texto convertido aparecerá aquí";
+    }
+
+    function copyText() {
+      const text = document.getElementById("outputText").textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Texto copiado ao portapapeis!");
+      });
     }
   </script>
 </body>
