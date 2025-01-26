@@ -3,28 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="icon" href="https://lumerp.github.io/favicon.ico" type="image/x-icon">
   <title>Fonts Switch - LUME RP</title>
-  <meta name="description" content="Fonts Switch proporcionado por LUME RP. Letras para Instagram, copiar e pegar de forma sinxela.">
-  <meta name="robots" content="index, follow">
-  
-  <link rel="canonical" href="https://lumerp.github.io">
-  <meta name="author" content="LUME RP">
-  
-  <meta property="og:locale" content="es_ES">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Fonts Switch - Letras para Instagram">
-  <meta property="og:description" content="Proporcionado por LUME RP. Letras orixinais para redes sociais.">
-  <meta property="og:url" content="https://lumerp.github.io">
-  <meta property="og:site_name" content="LUME RP">
-  <meta property="og:image" content="https://cdn.discordapp.com/attachments/767482631565606912/902219664803921970/2121.png">
-  <meta property="og:image:alt" content="Fonts Switch - Letras para Instagram">
-  
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Fonts Switch - Letras para Instagram">
-  <meta name="twitter:description" content="Letras orixinais para as túas redes sociais.">
-  <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/767482631565606912/902219664803921970/2121.png">
-
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -37,35 +16,6 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
-    }
-    .site-branding a {
-      text-decoration: none;
-      color: #000;
-      font-size: 24px;
-      font-weight: bold;
-    }
-    .main-navigation {
-      background-color: #333;
-      padding: 10px 0;
-    }
-    .main-navigation ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-    }
-    .main-navigation li {
-      margin: 0 15px;
-    }
-    .main-navigation a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-    .main-navigation a:hover {
-      color: #4CAF50;
     }
     textarea {
       width: 100%;
@@ -122,42 +72,16 @@
     .copy-button:hover {
       background-color: #45a049;
     }
-    footer {
-      background-color: #f1f1f1;
-      padding: 10px 0;
-      text-align: center;
-      margin-top: 40px;
-    }
-    .copyright a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
-  <header class="inside-header grid-container">
-    <div class="site-branding">
-      <p class="main-title" itemprop="headline">
-        <a href="https://lumerp.github.io" rel="home">LUME RP</a>
-      </p>
-    </div>
-  </header>
-
-  <nav class="main-navigation" id="site-navigation" aria-label="Principal" itemtype="https://schema.org/SiteNavigationElement" itemscope>
-    <ul id="primary-menu">
-      <li><a href="https://www.instagram.com/eduu.vc">Instagram</a></li>
-      <li><a href="https://lumerp.github.io">Foro</a></li>
-      <li><a href="https://soundcloud.com/bttweed">Soundcloud</a></li>
-      <li><a href="https://discord.gg/7qaBQZUrYg">Discord</a></li>
-      <li><a href="https://twitter.com/bttweed_">Twitter</a></li>
-    </ul>
-  </nav>
-
   <main class="grid-container">
-    <h2>Converter a Bold Sans-Serif</h2>
+    <h2>Converter Textos</h2>
     <textarea id="inputText" placeholder="Escribe aquí o teu texto..."></textarea>
-    <button onclick="convertText()">Converter</button>
+    <div>
+      <button onclick="convertToBold()">Convertir a 𝗟𝗨𝗠𝗘𝗥𝗣</button>
+      <button onclick="convertToInfo()">Convertir a ʟᴜᴍᴇʀᴘ</button>
+    </div>
 
     <div class="output-container">
       <pre id="outputText" class="output">O texto convertido aparecerá aquí</pre>
@@ -165,16 +89,8 @@
     </div>
   </main>
 
-  <footer class="site-info" aria-label="Sitio" itemtype="https://schema.org/WPFooter" itemscope>
-    <div class="inside-site-info grid-container">
-      <div class="copyright-bar">
-        <span class="copyright">&copy; 𝟮𝟬𝟮𝟮 𝗟𝗨𝗠𝗘 𝗥𝗣</span> &bull; 𝗠𝗔𝗗𝗘 𝗪𝗜𝗧𝗛 𝗟𝗢𝗩𝗘 𝗕𝗬 <a href="https://instagram.com/eduu.vc" itemprop="url">𝗘𝗗𝗨𝗨.𝗩𝗖 ❤️</a>
-      </div>
-    </div>
-  </footer>
-
   <script>
-    function convertText() {
+    function convertToBold() {
       const input = document.getElementById("inputText").value;
       const output = document.getElementById("outputText");
 
@@ -192,10 +108,30 @@
       output.textContent = convertedText || "O texto convertido aparecerá aquí";
     }
 
+    function convertToInfo() {
+      const input = document.getElementById("inputText").value;
+      const output = document.getElementById("outputText");
+
+      function toInfoStyle(char) {
+        const map = {
+          A: 'ᴀ', B: 'ʙ', C: 'ᴄ', D: 'ᴅ', E: 'ᴇ', F: 'ꜰ', G: 'ɢ', H: 'ʜ',
+          I: 'ɪ', J: 'ᴊ', K: 'ᴋ', L: 'ʟ', M: 'ᴍ', N: 'ɴ', O: 'ᴏ', P: 'ᴘ',
+          Q: 'ǫ', R: 'ʀ', S: 'ꜱ', T: 'ᴛ', U: 'ᴜ', V: 'ᴠ', W: 'ᴡ', X: 'x',
+          Y: 'ʏ', Z: 'ᴢ', a: 'ᴀ', b: 'ʙ', c: 'ᴄ', d: 'ᴅ', e: 'ᴇ', f: 'ꜰ',
+          g: 'ɢ', h: 'ʜ', i: 'ɪ', j: 'ᴊ', k: 'ᴋ', l: 'ʟ', m: 'ᴍ', n: 'ɴ',
+          o: 'ᴏ', p: 'ᴘ', q: 'ǫ', r: 'ʀ', s: 'ꜱ', t: 'ᴛ', u: 'ᴜ', v: 'ᴠ',
+          w: 'ᴡ', x: 'x', y: 'ʏ', z: 'ᴢ'
+        };
+        return map[char] || char;
+      }
+
+      const convertedText = Array.from(input).map(toInfoStyle).join('');
+      output.textContent = convertedText || "O texto convertido aparecerá aquí";
+    }
+
     function copyText() {
       const text = document.getElementById("outputText").textContent;
       navigator.clipboard.writeText(text).then(() => {
-        alert("Texto copiado ao portapapeis!");
       });
     }
   </script>
