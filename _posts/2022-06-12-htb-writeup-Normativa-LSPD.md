@@ -1,8 +1,8 @@
 ---
 layout: single
-title: Normativa LSPD
-excerpt: "La Normativa LSPD de Lume Rp"
-date: 2022-06-12
+title: Normativa LSMD
+excerpt: "La Normativa LSMD de Lume Rp"
+date: 2025-03-09
 classes: wide
 comments: false
 header:
@@ -12,7 +12,7 @@ header:
 categories:
   - Normativa
 tags:  
-  - Normativa-LSPD
+  - Normativa-LSMD
 ---
         
 ![](/assets/images/post6/0001.jpg)
